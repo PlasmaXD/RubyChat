@@ -30,4 +30,4 @@ sudo service postgresql start
 sudo service postgresql stop
 
 ## 再起動
-## なし pg_ctl で再起動する。
+なし pg_ctl で再起動する。
