@@ -7,7 +7,7 @@ document.addEventListener('turbolinks:load', () => {
 
         consumer.subscriptions.create({ channel: "ChatRoomChannel", chat_room_id: chatRoomId }, {
             connected() {
-                console.log('Connected to ChatRoomChannel ' + chatRoomId);
+                console.log(`Connected to ChatRoomChannel ${chatRoomId}`);
             },
 
             disconnected() {
@@ -15,13 +15,8 @@ document.addEventListener('turbolinks:load', () => {
             },
 
             received(data) {
-                console.log('Received data:', data); // デバッグ用のログ
                 const messages = document.getElementById('messages');
                 messages.insertAdjacentHTML('beforeend', data.message);
-            },
-
-            send_message(message, chat_room_id) {
-                this.perform('send_message', { message: message, chat_room_id: chat_room_id });
             }
         });
     }

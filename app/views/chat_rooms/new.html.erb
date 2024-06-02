@@ -19,8 +19,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :user_id, "Chat Partner ID" %>
-    <%= form.text_field :user_id %>
+    <%= form.label :user_ids, "Chat Partners" %>
+    <%= form.collection_select :user_ids, User.all, :id, :email, {}, { multiple: true } %>
   </div>
 
   <div class="actions">

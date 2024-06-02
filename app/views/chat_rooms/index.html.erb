@@ -1,0 +1,12 @@
+<h1>Chat Rooms</h1>
+
+<ul>
+  <% @chat_rooms.each do |chat_room| %>
+    <li>
+      <%= link_to chat_room.name, chat_room %>
+      <%= link_to 'Delete', chat_room, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'New Chat Room', new_chat_room_path %>

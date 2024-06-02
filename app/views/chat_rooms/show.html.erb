@@ -1,0 +1,25 @@
+<h1><%= @chat_room.name %></h1>
+
+<div id="messages">
+  <%= render @chat_room.private_messages %>
+</div>
+
+<%= form_with(model: [@chat_room, PrivateMessage.new], local: true, remote: true) do |form| %>
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Send" %>
+  </div>
+<% end %>
+
+
+<!--<h2>Messages</h2>-->
+<!--<ul>-->
+  <%#= render @chat_room.private_messages %>
+<!--</ul>-->
+
+<%= link_to 'Back to Chat Rooms', chat_rooms_path %>
+<%= link_to 'Delete Chat Room', @chat_room, method: :delete, data: { confirm: 'Are you sure?' } %>

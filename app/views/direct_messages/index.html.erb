@@ -1,0 +1,9 @@
+<h1>Direct Messages</h1>
+
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <%= link_to user.email, direct_message_path(chat_partner_id: user.id) %>
+    </li>
+  <% end %>
+</ul>
