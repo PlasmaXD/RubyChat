@@ -21,9 +21,12 @@ FROM base as build
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git libpq-dev libvips pkg-config
 # Install Node.js and Yarn
-RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
+RUN apt-get update -qq && \
+    apt-get install -y curl && \
+    curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
     apt-get install -y nodejs && \
     npm install -g yarn
+
 # Install application gems
 COPY Gemfile Gemfile.lock ./
 RUN bundle install && \
