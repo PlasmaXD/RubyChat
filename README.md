@@ -1,27 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 ## 1.2. Ubuntu の場合
 ## 起動
 sudo service postgresql start
@@ -30,4 +8,19 @@ sudo service postgresql start
 sudo service postgresql stop
 
 ## 再起動
-## なし pg_ctl で再起動する。
+なし pg_ctl で再起動する。
+
+Pumaサーバー解除
+
+```bash
+sudo systemctl stop puma
+
+sudo systemctl disable puma
+```
+
+ステータスの確認
+
+```bash
+sudo systemctl status puma
+```
+
