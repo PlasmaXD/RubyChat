@@ -55,4 +55,3 @@ sudo tail -f /var/log/nginx/error.log
 sudo tail -f /path/to/your/rails/app/log/production.log
 ```
 
-これらの手順を順番に実行することで、NginxとPumaの設定が正しく機能するか確認できます。問題が続く場合は、エラーログの内容を提供してください。
