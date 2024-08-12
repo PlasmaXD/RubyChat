@@ -37,11 +37,11 @@ COPY . .
 # Install webpack, webpack-cli, babel-loader and @babel/core
 RUN yarn add webpack webpack-cli babel-loader @babel/core
 
-# Remove or disable case-sensitive-paths-webpack-plugin
-RUN yarn remove case-sensitive-paths-webpack-plugin
-
 # Webpackのキャッシュをクリア
 RUN yarn cache clean
+
+# Webpack設定でプラグインを無効化
+RUN echo "const { environment } = require('@rails/webpacker'); environment.plugins.delete('CaseSensitivePathsPlugin'); module.exports = environment;" > config/webpack/environment.js
 
 # Install webpacker (if not already installed)
 RUN SECRET_KEY_BASE=DUMMY_VALUE bundle exec rails webpacker:install
