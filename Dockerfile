@@ -26,18 +26,12 @@ RUN bundle install && \
 
 COPY . .
 
-RUN yarn add webpack webpack-cli babel-loader @babel/core
-
-# `node_modules`をクリアして再インストール
+# 依存関係の再インストール
 RUN rm -rf node_modules && yarn install
-
-# Webpackのキャッシュをクリア
-RUN yarn cache clean
 
 # Webpack設定でプラグインを無効化
 RUN echo "const { environment } = require('@rails/webpacker'); environment.plugins.delete('CaseSensitivePathsPlugin'); module.exports = environment;" > config/webpack/environment.js
 
-# Install webpacker (if not already installed)
 RUN SECRET_KEY_BASE=DUMMY_VALUE bundle exec rails webpacker:install
 
 RUN bundle exec bootsnap precompile app/ lib/
