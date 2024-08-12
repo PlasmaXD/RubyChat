@@ -1,4 +1,7 @@
 const { environment } = require('@rails/webpacker')
-environment.plugins.delete('CaseSensitivePathsPlugin')
+const webpack = require('webpack')
+
+// environment.plugins.delete('CaseSensitivePathsPlugin')
+environment.plugins.delete('CaseSensitivePathsPlugin');
 
 module.exports = environment

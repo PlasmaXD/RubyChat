@@ -90,7 +90,8 @@ module.exports = function (api) {
   const plugins = [
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-proposal-private-methods',
-    '@babel/plugin-proposal-private-property-in-object', // 追加
+    '@babel/plugin-proposal-private-property-in-object',
+    '@babel/plugin-syntax-dynamic-import',
   ];
 
   return {
