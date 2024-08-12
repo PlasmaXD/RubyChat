@@ -34,22 +34,17 @@ RUN bundle install && \
 # Copy application code
 COPY . .
 
-# Install webpack and webpack-cli
-RUN yarn add webpack webpack-cli
-
-# Set SECRET_KEY_BASE for build
-ENV SECRET_KEY_BASE_DUMMY=1
+# Install webpack, webpack-cli, babel-loader and @babel/core
+RUN yarn add webpack webpack-cli babel-loader @babel/core
 
 # Install webpacker (if not already installed)
-RUN SECRET_KEY_BASE=$SECRET_KEY_BASE_DUMMY bundle exec rails webpacker:install
+RUN SECRET_KEY_BASE=DUMMY_VALUE bundle exec rails webpacker:install
 
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-#RUN SECRET_KEY_BASE=$SECRET_KEY_BASE_DUMMY bundle exec rails assets:precompile --trace
 RUN SECRET_KEY_BASE=DUMMY_VALUE bundle exec rails assets:precompile --trace
-
 
 # Final stage for app image
 FROM base
