@@ -4,5 +4,10 @@
   "main": "index.js",
   "repository": "https://github.com/PlasmaXD/RubyBBS.git",
   "author": "Jun Murase <masutadoz@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.3",
+    "babel-loader": "^9.1.3"
+  }
 }

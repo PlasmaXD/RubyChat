@@ -26,8 +26,11 @@ RUN bundle install && \
 
 COPY . .
 
-# 依存関係の再インストール
-RUN rm -rf node_modules && yarn install
+# Babel関連のパッケージをインストール/再インストール
+RUN yarn add babel-loader @babel/core @babel/preset-env
+
+# Webpackのキャッシュをクリア
+RUN yarn cache clean
 
 # Webpack設定でプラグインを無効化
 RUN echo "const { environment } = require('@rails/webpacker'); environment.plugins.delete('CaseSensitivePathsPlugin'); module.exports = environment;" > config/webpack/environment.js
