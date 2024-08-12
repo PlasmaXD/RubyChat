@@ -37,6 +37,9 @@ COPY . .
 # Install webpack and webpack-cli
 RUN yarn add webpack webpack-cli
 
+# Install webpacker (if not already installed)
+RUN bundle exec rails webpacker:install
+
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
