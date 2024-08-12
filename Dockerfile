@@ -34,6 +34,9 @@ RUN bundle install && \
 # Copy application code
 COPY . .
 
+# Install webpack and webpack-cli
+RUN yarn add webpack webpack-cli
+
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
