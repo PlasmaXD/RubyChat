@@ -47,6 +47,9 @@ default: &default
     - .jpeg
     - .jpg
 
+  # ここに追加
+  case_sensitive_paths: false
+
 development:
   <<: *default
   compile: true
@@ -90,3 +93,5 @@ production:
 
   # Cache manifest.json for performance
   cache_manifest: true
+  # ここにも追加
+  case_sensitive_paths: false
